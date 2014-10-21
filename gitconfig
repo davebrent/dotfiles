@@ -1,0 +1,17 @@
+[user]
+	name = Dave Poulter
+	email = dapoulter@gmail.com
+
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore_global
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+
+[alias]
+    graph = log --graph --full-history --all --pretty=format:'%Cred%h%Creset \
+        -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
+        --abbrev-commit --date=relative
