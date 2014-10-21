@@ -1,10 +1,13 @@
 [user]
-	name = Dave Poulter
-	email = dapoulter@gmail.com
+    name = Dave Poulter
+    email = dapoulter@gmail.com
 
 [core]
     editor = vim
     excludesfile = ~/.gitignore_global
+
+[push]
+    default = simple
 
 [color]
     diff = auto
