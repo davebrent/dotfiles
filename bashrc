@@ -31,6 +31,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
 fi
 
+# Enable vi mode
+set -o vi
+
 function psg {
   ps aux | grep -v grep | grep $1
 }
@@ -42,9 +45,9 @@ function server {
 alias la='ls -la'
 alias ll='ls -l'
 
-alias gs='git status'
+alias gs='git status --short'
 alias gd='git diff'
-alias gl='git log'
+alias gl='git log --pretty=oneline --abbrev-commit'
 alias gg='git graph'
 
 [ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
