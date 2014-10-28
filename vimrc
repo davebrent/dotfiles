@@ -86,6 +86,9 @@ autocmd Filetype javascript setlocal colorcolumn=100
 autocmd Filetype html setlocal colorcolumn=100
 autocmd Filetype css setlocal colorcolumn=100
 
+autocmd FileType gitcommit set colorcolumn=50
+autocmd FileType gitcommit set colorcolumn+=72
+
 " Key Mappings
 " ============
 
