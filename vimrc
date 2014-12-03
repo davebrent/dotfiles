@@ -20,6 +20,7 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'groenewege/vim-less'
   Plugin 'hail2u/vim-css3-syntax'
   Plugin 'tikhomirov/vim-glsl'
+  Plugin 'sophacles/vim-processing'
 
   call vundle#end()
   filetype plugin indent on
