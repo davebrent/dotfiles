@@ -1,0 +1,8 @@
+Dotfiles
+========
+
+Setup:
+
+  git clone git@github.com:davebrent/dotfiles.git .dotfiles
+  cd .dotfiles
+  make
