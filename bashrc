@@ -55,3 +55,8 @@ alias gg='git graph'
 
 [ -f ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
 [ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
+
+sclang='/Applications/SuperCollider/SuperCollider.app/Contents/Resources/sclang'
+if [ -f $sclang ]; then
+    alias sclang=$sclang
+fi
