@@ -10,6 +10,9 @@ git:
 	ln -fns $(DOTFILES)/gitconfig ../.gitconfig
 	ln -fns $(DOTFILES)/gitignore_global ../.gitignore_global
 
+tmux:
+	ln -fns $(DOTFILES)/tmux.conf ../.tmux.conf
+
 vim:
 	ln -fns $(DOTFILES)/vimrc ../.vimrc
 
