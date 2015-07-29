@@ -6,7 +6,7 @@ export CLICOLOR=1
 export PYTHONDONTWRITEBYTECODE=true
 export EDITOR='/usr/bin/vim'
 
-export PATH=/usr/local/lib:/usr/local/bin:$PATH
+export PATH=./bin:/usr/local/lib:/usr/local/bin:$PATH
 
 # Set PATH so it include private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -35,11 +35,11 @@ fi
 set -o vi
 
 function psg {
-  ps aux | grep -v grep | grep $1
+    ps aux | grep -v grep | grep $1
 }
 
 function server {
-  python -m SimpleHTTPServer $1
+    python -m SimpleHTTPServer $1
 }
 
 alias la='ls -la'
@@ -60,3 +60,4 @@ sclang='/Applications/SuperCollider/SuperCollider.app/Contents/Resources/sclang'
 if [ -f $sclang ]; then
     alias sclang=$sclang
 fi
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib
