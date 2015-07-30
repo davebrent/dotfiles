@@ -42,6 +42,10 @@ function server {
     python -m SimpleHTTPServer $1
 }
 
+function s {
+    grep -Hrn $1 $2
+}
+
 alias la='ls -la'
 alias ll='ls -l'
 

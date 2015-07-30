@@ -101,3 +101,5 @@ nnoremap Q <nop>
 " Copy & paste
 nnoremap <F2> :set invpaste paste?<CR>
 nnoremap <Leader>vv <F2>"+p<F2>
+
+command! PrettifyJSON execute ":%!python -m json.tool"
