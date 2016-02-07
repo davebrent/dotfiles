@@ -9,7 +9,6 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'kana/vim-operator-user'
   Plugin 'rhysd/vim-clang-format'
   Plugin 'scrooloose/nerdtree'
-  Plugin 'NLKNguyen/papercolor-theme'
   Plugin 'tpope/vim-fugitive'
   Plugin 'airblade/vim-gitgutter'
   Plugin 'bling/vim-airline'
@@ -20,6 +19,11 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'hail2u/vim-css3-syntax'
   Plugin 'tikhomirov/vim-glsl'
   Plugin 'sophacles/vim-processing'
+  Plugin 'groenewege/vim-less'
+  Plugin 'plasticboy/vim-markdown'
+  Plugin 'kien/ctrlp.vim'
+  Plugin 'mileszs/ack.vim'
+  Plugin 'mkarmona/colorsbox'
 
   call vundle#end()
   filetype plugin indent on
@@ -27,11 +31,10 @@ endif
 
 set background=dark
 highlight ColorColumn guibg=Gray
-autocmd! GUIEnter * set vb t_vb=
 let g:rehash256=1
 let &t_Co=256
 
-colorscheme PaperColor
+colorscheme colorsbox-material
 
 syntax enable
 set mouse=a
@@ -63,6 +66,8 @@ set pastetoggle=<F2>
 set showmode
 set clipboard=unnamed
 
+set hidden
+
 let g:netrw_list_hide='.*\.pyc$'
 
 let g:airline_left_sep=''
@@ -75,6 +80,8 @@ let NERDTreeIgnore=['\.pyc$', '.DS_Store', '\.o$', '\.so$']
 let NERDTreeMinimalUI=1
 let g:NERDTreeWinSize=20
 nmap <Leader>nt :NERDTreeToggle<CR>
+
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|env'
 
 " Fix highlighting certain keywords
 augroup VimCSS3Syntax
