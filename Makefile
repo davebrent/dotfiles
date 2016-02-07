@@ -15,6 +15,7 @@ tmux:
 
 vim:
 	ln -fns $(DOTFILES)/vimrc ../.vimrc
+	ln -fns $(DOTFILES)/vimrc ../.config/nvim/init.vim
 
 mercurial:
 	ln -fns $(DOTFILES)/hgignore_global ../.hgignore_global
