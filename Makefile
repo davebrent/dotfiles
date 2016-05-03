@@ -1,6 +1,6 @@
 DOTFILES := $(shell pwd)
 
-.PHONY: git vim mercurial bash sqlite
+.PHONY: git vim mercurial bash sqlite guile
 
 all: git vim mercurial bash sqlite
 
@@ -9,6 +9,9 @@ git:
 	ln -fns $(DOTFILES)/git-prompt.sh ../.git-prompt.sh
 	ln -fns $(DOTFILES)/gitconfig ../.gitconfig
 	ln -fns $(DOTFILES)/gitignore_global ../.gitignore_global
+
+guile:
+	ln -fns $(DOTFILES)/guile ../.guile
 
 tmux:
 	ln -fns $(DOTFILES)/tmux.conf ../.tmux.conf
