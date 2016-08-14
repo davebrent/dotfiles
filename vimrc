@@ -24,6 +24,11 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'kien/ctrlp.vim'
   Plugin 'mileszs/ack.vim'
   Plugin 'mkarmona/colorsbox'
+  Plugin 'vim-scripts/paredit.vim'
+  Plugin 'Glench/Vim-Jinja2-Syntax'
+  Plugin 'sjl/tslime.vim'
+  Plugin 'scrooloose/syntastic'
+  Plugin 'mtscout6/syntastic-local-eslint.vim'
 
   call vundle#end()
   filetype plugin indent on
@@ -70,18 +75,52 @@ set hidden
 
 let g:netrw_list_hide='.*\.pyc$'
 
+" airline
+" -------
+
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_theme='dark'
 let g:airline#extensions#tabline#enabled=1
 
+" nerdtree
+" --------
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$', '.DS_Store', '\.o$', '\.so$']
 let NERDTreeMinimalUI=1
 let g:NERDTreeWinSize=20
 nmap <Leader>nt :NERDTreeToggle<CR>
 
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|env'
+" ctrl-p
+" ------
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|env\|build'
+
+" syntastic
+" ---------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=1
+
+let g:syntastic_cpp_compiler='clang++'
+let g:syntastic_cpp_include_dirs=['/usr/local/include']
+let g:syntastic_cpp_compiler_options=' -std=c++14 -stdlib=libc++'
+
+let g:syntastic_javascript_checkers=['eslint']
+
+let g:syntastic_enable_cpp_checker=1
+let g:syntastic_enable_javascript_checker=0
+
+" tslime
+" ------
+let g:tslime_ensure_trailing_newlines=1
+let g:tslime_normal_mapping='<localleader>t'
+let g:tslime_visual_mapping='<localleader>t'
+let g:tslime_vars_mapping='<localleader>T'
 
 " Fix highlighting certain keywords
 augroup VimCSS3Syntax
