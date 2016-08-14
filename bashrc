@@ -29,29 +29,26 @@ shopt -s histappend
 shopt -s checkwinsize
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    source /etc/bash_completion
+  source /etc/bash_completion
 fi
 
 # Enable color support of ls and grep
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  alias grep='grep --color=auto'
 fi
 
-# Enable vi mode
-set -o vi
-
 function psg {
-    ps aux | grep -v grep | grep $1
+  ps aux | grep -v grep | grep $1
 }
 
 function server {
-    python -m SimpleHTTPServer $1
+  python -m SimpleHTTPServer $1
 }
 
 function s {
-    grep -Hrn $1 $2
+  grep -Hrn $1 $2
 }
 
 alias la='ls -la'
