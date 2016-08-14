@@ -11,12 +11,25 @@ export EDITOR='vim'
 export PATH=./bin:./build/bin:/usr/local/lib:/usr/local/bin:$PATH
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib:PKG_CONFIG_PATH
 
+if [ -d "$HOME/local/lib" ] ; then
+  export LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
+fi
+
 if [ -d "$HOME/local/bin" ] ; then
   export PATH="$HOME/local/bin:$PATH"
 fi
 
 if [ -d "$HOME/local/lib/pkgconfig" ] ; then
   export PKG_CONFIG_PATH="$HOME/local/lib/pkgconfig:$PKG_CONFIG_PATH"
+fi
+
+if [ -d "$HOME/Projects/hans" ] ; then
+  export DYLD_LIBRARY_PATH="$HOME/Projects/hans/build/lib:$DYLD_LIBRARY_PATH"
+  export HANS_MODULES_PATH="$HOME/Projects/hans/build/lib"
+fi
+
+if [ -d "$HOME/local/lib/guile" ] ; then
+  export GUILE_LOAD_PATH="$HOME/local/lib/guile:$GUILE_LOAD_PATH"
 fi
 
 export ASAN_OPTIONS=detect_container_overflow=0
