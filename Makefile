@@ -67,5 +67,5 @@ bash: ../.bashrc ../.bash_profile
 # Sqlite
 
 ../.sqliterc:
-	ln -fns $(DOTFILES)/sqliterc ../.sqliterc
+	ln -fns $(DOTFILES)/sqliterc $@
 sqlite: ../.sqliterc
