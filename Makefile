@@ -1,31 +1,71 @@
 DOTFILES := $(shell pwd)
 
-.PHONY: git vim mercurial bash sqlite guile
+.PHONY: local git guile tmux vim mercurial bash sqlite
 
-all: git vim mercurial bash sqlite
+all: local git guile tmux vim mercurial bash sqlite
 
-git:
-	ln -fns $(DOTFILES)/git-completion.bash ../.git-completion.bash
-	ln -fns $(DOTFILES)/git-prompt.sh ../.git-prompt.sh
-	ln -fns $(DOTFILES)/gitconfig ../.gitconfig
-	ln -fns $(DOTFILES)/gitignore_global ../.gitignore_global
+../local/:
+	mkdir -p $@
+../local/lib/: ../local/
+	mkdir -p $@
+../local/bin/: ../local/
+	mkdir -p $@
+../local/include/: ../local/
+	mkdir -p $@
+../local/genv/: ../local/
+	virtualenv $@ --no-site-packages && \
+		source ../local/genv/bin/activate && \
+		pip install -r requirements.txt
+local: ../local/lib ../local/bin ../local/include ../local/genv
 
-guile:
-	ln -fns $(DOTFILES)/guile ../.guile
+# Git
 
-tmux:
-	ln -fns $(DOTFILES)/tmux.conf ../.tmux.conf
+../.git-completion.bash:
+	ln -fns $(DOTFILES)/git-completion.bash $@
+../.git-prompt.sh:
+	ln -fns $(DOTFILES)/git-prompt.sh $@
+../.gitconfig:
+	ln -fns $(DOTFILES)/gitconfig $@
+../.gitignore_global:
+	ln -fns $(DOTFILES)/gitignore_global $@
+git: ../.git-completion.bash ../.git-prompt.sh ../.gitconfig ../.gitignore_global
 
-vim:
-	ln -fns $(DOTFILES)/vimrc ../.vimrc
-	ln -fns $(DOTFILES)/vimrc ../.config/nvim/init.vim
+# Guile
 
-mercurial:
-	ln -fns $(DOTFILES)/hgignore_global ../.hgignore_global
+../.guile:
+	ln -fns $(DOTFILES)/guile $@
+guile: ../.guile
 
-bash:
-	ln -fns $(DOTFILES)/bashrc ../.bashrc
-	ln -fns $(DOTFILES)/bash_profile ../.bash_profile
+# Tmux
 
-sqlite:
+../.tmux.conf:
+	ln -fns $(DOTFILES)/tmux.conf $@
+tmux: ../.tmux.conf
+
+# Vim
+
+../.vimrc:
+	ln -fns $(DOTFILES)/vimrc $@
+../.config/nvim/init.vim:
+	ln -fns $(DOTFILES)/vimrc $@
+vim: ../.vimrc ../.config/nvim/init.vim
+
+# Mercurial
+
+../.hgignore_global:
+	ln -fns $(DOTFILES)/hgignore_global $@
+mercurial: ../.hgignore_global
+
+# Bash
+
+../.bashrc:
+	ln -fns $(DOTFILES)/bashrc $@
+../.bash_profile:
+	ln -fns $(DOTFILES)/bash_profile $@
+bash: ../.bashrc ../.bash_profile
+
+# Sqlite
+
+../.sqliterc:
 	ln -fns $(DOTFILES)/sqliterc ../.sqliterc
+sqlite: ../.sqliterc
