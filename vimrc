@@ -86,14 +86,14 @@ let g:airline#extensions#tabline#enabled=1
 " nerdtree
 " --------
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.pyc$', '.DS_Store', '\.o$', '\.so$']
+let NERDTreeIgnore=['\.pyc$', '.DS_Store', '\.o$', '\.so$', '__pycache__']
 let NERDTreeMinimalUI=1
 let g:NERDTreeWinSize=20
 nmap <Leader>nt :NERDTreeToggle<CR>
 
 " ctrl-p
 " ------
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|env\|build'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|env\|build\|__pycache__'
 
 " syntastic
 " ---------
@@ -111,7 +111,9 @@ let g:syntastic_cpp_include_dirs=['/usr/local/include']
 let g:syntastic_cpp_compiler_options=' -std=c++14 -stdlib=libc++'
 
 let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_python_checkers = ['flake8']
 
+let g:syntastic_enable_python_checker = 1
 let g:syntastic_enable_cpp_checker=1
 let g:syntastic_enable_javascript_checker=0
 

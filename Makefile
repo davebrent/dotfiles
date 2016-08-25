@@ -1,8 +1,11 @@
 DOTFILES := $(shell pwd)
 
-.PHONY: local git guile tmux vim mercurial bash sqlite
+.PHONY: local git guile tmux vim mercurial bash sqlite flake8
 
-all: local git guile tmux vim mercurial bash sqlite
+all: local git guile tmux vim mercurial bash sqlite flake8
+
+../.config:
+	mkdir -p $@
 
 ../local/:
 	mkdir -p $@
@@ -69,3 +72,9 @@ bash: ../.bashrc ../.bash_profile
 ../.sqliterc:
 	ln -fns $(DOTFILES)/sqliterc $@
 sqlite: ../.sqliterc
+
+# Flake8
+
+../.config/flake8: ../.config
+	ln -fns $(DOTFILES)/flake8 $@
+flake8: ../.config/flake8
