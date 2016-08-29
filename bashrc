@@ -13,6 +13,7 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib:PKG_CONFIG_PATH
 
 if [ -d "$HOME/local/lib" ] ; then
   export LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
+  export LIBRARY_PATH="$HOME/local/lib:$LIBRARY_PATH"
 fi
 
 if [ -d "$HOME/local/bin" ] ; then
