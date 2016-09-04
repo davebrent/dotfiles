@@ -53,6 +53,14 @@ if [ -x /usr/bin/dircolors ]; then
   alias grep='grep --color=auto'
 fi
 
+function encdir {
+  tar -c $1 | gpg --symmetric --cipher-algo AES256 > $2
+}
+
+function decdir {
+  gpg -d $1 | tar -xf -
+}
+
 function psg {
   ps aux | grep -v grep | grep $1
 }
