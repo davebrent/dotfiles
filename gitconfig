@@ -1,6 +1,6 @@
 [user]
     name = Dave Poulter
-    email = dapoulter@gmail.com
+    email = hello@davepoulter.net
 
 [core]
     editor = NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim
