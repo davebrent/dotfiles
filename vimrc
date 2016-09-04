@@ -29,6 +29,7 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'sjl/tslime.vim'
   Plugin 'scrooloose/syntastic'
   Plugin 'mtscout6/syntastic-local-eslint.vim'
+  Plugin 'ekalinin/Dockerfile.vim'
 
   call vundle#end()
   filetype plugin indent on
