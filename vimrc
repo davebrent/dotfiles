@@ -9,16 +9,12 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'kana/vim-operator-user'
   Plugin 'rhysd/vim-clang-format'
   Plugin 'scrooloose/nerdtree'
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'airblade/vim-gitgutter'
-  Plugin 'bling/vim-airline'
   Plugin 'bronson/vim-trailing-whitespace'
   Plugin 'bufkill.vim'
   Plugin 'pangloss/vim-javascript'
   Plugin 'cakebaker/scss-syntax.vim'
   Plugin 'hail2u/vim-css3-syntax'
   Plugin 'tikhomirov/vim-glsl'
-  Plugin 'sophacles/vim-processing'
   Plugin 'groenewege/vim-less'
   Plugin 'plasticboy/vim-markdown'
   Plugin 'kien/ctrlp.vim'
@@ -27,24 +23,19 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'vim-scripts/paredit.vim'
   Plugin 'Glench/Vim-Jinja2-Syntax'
   Plugin 'sjl/tslime.vim'
-  Plugin 'scrooloose/syntastic'
   Plugin 'mtscout6/syntastic-local-eslint.vim'
   Plugin 'ekalinin/Dockerfile.vim'
+  Plugin 'tpope/vim-commentary'
+  Plugin 'leafgarland/typescript-vim'
+  Plugin 'whatyouhide/vim-gotham'
 
   call vundle#end()
   filetype plugin indent on
 endif
 
-set background=dark
-highlight ColorColumn guibg=Gray
-let g:rehash256=1
-let &t_Co=256
-
-colorscheme colorsbox-material
-
 syntax enable
 set mouse=a
-set laststatus=2
+set laststatus=0
 set cursorline
 set colorcolumn+=80
 set ruler
@@ -71,25 +62,23 @@ set autoread
 set pastetoggle=<F2>
 set showmode
 set clipboard=unnamed
-
 set hidden
+set noruler
+set noshowcmd
+
+set background=dark
+set termguicolors
+colorscheme gotham256
+:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 let g:netrw_list_hide='.*\.pyc$'
-
-" airline
-" -------
-
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_theme='dark'
-let g:airline#extensions#tabline#enabled=1
 
 " nerdtree
 " --------
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$', '.DS_Store', '\.o$', '\.so$', '__pycache__']
 let NERDTreeMinimalUI=1
-let g:NERDTreeWinSize=20
+let g:NERDTreeWinSize=25
 nmap <Leader>nt :NERDTreeToggle<CR>
 
 " ctrl-p
@@ -152,3 +141,5 @@ nnoremap <F2> :set invpaste paste?<CR>
 nnoremap <Leader>vv <F2>"+p<F2>
 
 command! PrettifyJSON execute ":%!python -m json.tool"
+
+set fillchars+=vert:\ 
