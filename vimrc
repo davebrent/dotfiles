@@ -26,8 +26,7 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'mtscout6/syntastic-local-eslint.vim'
   Plugin 'ekalinin/Dockerfile.vim'
   Plugin 'tpope/vim-commentary'
-  Plugin 'leafgarland/typescript-vim'
-  Plugin 'whatyouhide/vim-gotham'
+  Plugin 'w0ng/vim-hybrid'
 
   call vundle#end()
   filetype plugin indent on
@@ -68,7 +67,7 @@ set noshowcmd
 
 set background=dark
 set termguicolors
-colorscheme gotham256
+colorscheme hybrid
 :let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 let g:netrw_list_hide='.*\.pyc$'
@@ -142,4 +141,4 @@ nnoremap <Leader>vv <F2>"+p<F2>
 
 command! PrettifyJSON execute ":%!python -m json.tool"
 
-set fillchars+=vert:\ 
+set fillchars+=vert:\|
