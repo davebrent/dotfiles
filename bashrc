@@ -77,6 +77,8 @@ alias gd='git diff'
 alias gl='git log --pretty=oneline --abbrev-commit'
 alias gg='git graph'
 
+alias cargofmt='cargo fmt -- --write-mode=overwrite'
+
 [ -f ~/local/genv/bin/activate ] && source ~/local/genv/bin/activate
 
 [ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
