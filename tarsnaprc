@@ -1,0 +1,15 @@
+cachedir ~/.cache/tarsnap
+keyfile ~/.config/tarsnap/tarsnap.key
+
+nodump
+print-stats
+checkpoint-bytes 1G
+humanize-numbers
+
+exclude node_modules
+exclude venv
+exclude env
+exclude build
+exclude .git
+exclude *.o
+exclude *.so

@@ -78,3 +78,9 @@ sqlite: ../.sqliterc
 ../.config/flake8: ../.config
 	ln -fns $(DOTFILES)/flake8 $@
 flake8: ../.config/flake8
+
+# Tarsnap
+
+../.tarsnaprc:
+	ln -fns $(DOTFILES)/tarsnaprc $@
+tarsnap: ../.tarsnaprc
