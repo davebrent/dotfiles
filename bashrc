@@ -63,7 +63,7 @@ function psg {
 }
 
 function server {
-  python -m SimpleHTTPServer $1
+  python -m http.server $1
 }
 
 function s {
