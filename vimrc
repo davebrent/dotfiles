@@ -26,6 +26,10 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'ekalinin/Dockerfile.vim'
   Plugin 'tpope/vim-commentary'
   Plugin 'w0ng/vim-hybrid'
+  Plugin 'cespare/vim-toml'
+  Plugin 'chriskempson/base16-vim'
+  Plugin 'rust-lang/rust.vim'
+  Plugin 'posva/vim-vue'
 
   call vundle#end()
   filetype plugin indent on
@@ -66,8 +70,9 @@ set noshowcmd
 
 set background=dark
 set termguicolors
-colorscheme hybrid
-:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+let base16colorspace=256
+colorscheme base16-materia
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 let g:netrw_list_hide='.*\.pyc$'
 
