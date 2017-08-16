@@ -9,7 +9,6 @@ alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 export EDITOR='vim'
 export VISUAL='vim'
 
-export PATH=./bin:./build/bin:/usr/local/lib:/usr/local/bin:$PATH
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib:PKG_CONFIG_PATH
 
 if [ -d "$HOME/local/lib" ] ; then
@@ -17,8 +16,8 @@ if [ -d "$HOME/local/lib" ] ; then
   export LIBRARY_PATH="$HOME/local/lib:$LIBRARY_PATH"
 fi
 
-if [ -d "$HOME/local/bin" ] ; then
-  export PATH="$HOME/local/bin:$PATH"
+if [ -d "$HOME/bin" ] ; then
+  export PATH="$HOME/bin:$PATH"
 fi
 
 if [ -d "$HOME/local/lib/pkgconfig" ] ; then
