@@ -7,6 +7,7 @@ export PYTHONDONTWRITEBYTECODE=true
 
 alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 export EDITOR='vim'
+export VISUAL='vim'
 
 export PATH=./bin:./build/bin:/usr/local/lib:/usr/local/bin:$PATH
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib:PKG_CONFIG_PATH
