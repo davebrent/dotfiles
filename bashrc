@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-export PS1='\u@\h$(__git_ps1 " (%s)") \W/$ '
+export PS1='\u@\h$(__git_ps1 " (%s)") \W/\n$ '
 export CLICOLOR=1
 export PYTHONDONTWRITEBYTECODE=true
 
