@@ -64,6 +64,7 @@ set autoread
 set pastetoggle=<F2>
 set showmode
 set clipboard=unnamed
+set clipboard+=unnamedplus
 set hidden
 set noruler
 set noshowcmd
