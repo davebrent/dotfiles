@@ -23,7 +23,6 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'vim-scripts/paredit.vim'
   Plugin 'Glench/Vim-Jinja2-Syntax'
   Plugin 'sjl/tslime.vim'
-  Plugin 'mtscout6/syntastic-local-eslint.vim'
   Plugin 'ekalinin/Dockerfile.vim'
   Plugin 'tpope/vim-commentary'
   Plugin 'w0ng/vim-hybrid'
@@ -83,28 +82,6 @@ nmap <Leader>nt :NERDTreeToggle<CR>
 " ctrl-p
 " ------
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|env\|build\|__pycache__'
-
-" syntastic
-" ---------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=1
-
-let g:syntastic_cpp_compiler='clang++'
-let g:syntastic_cpp_include_dirs=['/usr/local/include']
-let g:syntastic_cpp_compiler_options=' -std=c++14 -stdlib=libc++'
-
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_python_checkers = ['flake8']
-
-let g:syntastic_enable_python_checker = 1
-let g:syntastic_enable_cpp_checker=1
-let g:syntastic_enable_javascript_checker=0
 
 " tslime
 " ------
