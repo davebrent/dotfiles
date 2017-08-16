@@ -29,10 +29,6 @@ if [ -d "$HOME/Projects/hans" ] ; then
   export HANS_MODULES_PATH="$HOME/Projects/hans/build/lib"
 fi
 
-if [ -d "$HOME/local/lib/guile" ] ; then
-  export GUILE_LOAD_PATH="$HOME/local/lib/guile:$GUILE_LOAD_PATH"
-fi
-
 export ASAN_OPTIONS=detect_container_overflow=0
 
 # Append to the history file, don't overwrite it
