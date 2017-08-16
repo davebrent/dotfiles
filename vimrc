@@ -67,6 +67,7 @@ set clipboard=unnamed
 set hidden
 set noruler
 set noshowcmd
+set nofoldenable
 
 set background=dark
 set termguicolors
