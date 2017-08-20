@@ -7,37 +7,13 @@ all: local git guile tmux vim mercurial bash sqlite flake8
 ../.config:
 	mkdir -p $@
 
-../local/:
-	mkdir -p $@
-../local/lib/: ../local/
-	mkdir -p $@
-../local/bin/: ../local/
-	mkdir -p $@
-../local/include/: ../local/
-	mkdir -p $@
-../local/genv/: ../local/
-	virtualenv $@ --no-site-packages && \
-		source ../local/genv/bin/activate && \
-		pip install -r requirements.txt
-local: ../local/lib ../local/bin ../local/include ../local/genv
-
 # Git
 
-../.git-completion.bash:
-	ln -fns $(DOTFILES)/git-completion.bash $@
-../.git-prompt.sh:
-	ln -fns $(DOTFILES)/git-prompt.sh $@
 ../.gitconfig:
 	ln -fns $(DOTFILES)/gitconfig $@
 ../.gitignore_global:
 	ln -fns $(DOTFILES)/gitignore_global $@
 git: ../.git-completion.bash ../.git-prompt.sh ../.gitconfig ../.gitignore_global
-
-# Guile
-
-../.guile:
-	ln -fns $(DOTFILES)/guile $@
-guile: ../.guile
 
 # Tmux
 
