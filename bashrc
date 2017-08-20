@@ -79,10 +79,8 @@ alias gg='git graph'
 
 alias cargofmt='cargo fmt -- --write-mode=overwrite'
 
-[ -f ~/local/genv/bin/activate ] && source ~/local/genv/bin/activate
-
-[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
-[ -f ~/.git-prompt.sh ] && source ~/.git-prompt.sh
+[ -f /usr/share/git/completion/git-completion.bash ] && source /usr/share/git/completion/git-completion.bash
+[ -f /usr/share/git/completion/git-prompt.sh ] && source /usr/share/git/completion/git-prompt.sh
 
 [ -f ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
 [ -f ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
