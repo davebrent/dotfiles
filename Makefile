@@ -1,8 +1,8 @@
 DOTFILES := $(shell pwd)
 
-.PHONY: local git guile tmux vim mercurial bash sqlite flake8
+.PHONY: git tmux vim mercurial bash sqlite flake8
 
-all: local git guile tmux vim mercurial bash sqlite flake8
+all: git tmux vim mercurial bash sqlite flake8
 
 ../.config:
 	mkdir -p $@
@@ -13,7 +13,7 @@ all: local git guile tmux vim mercurial bash sqlite flake8
 	ln -fns $(DOTFILES)/gitconfig $@
 ../.gitignore_global:
 	ln -fns $(DOTFILES)/gitignore_global $@
-git: ../.git-completion.bash ../.git-prompt.sh ../.gitconfig ../.gitignore_global
+git: ../.gitconfig ../.gitignore_global
 
 # Tmux
 
