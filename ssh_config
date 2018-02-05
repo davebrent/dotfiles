@@ -1,0 +1,20 @@
+Host personal
+  Port 2222
+  Hostname 127.0.0.1
+  User admin
+
+Host private
+  Port 2223
+  Hostname 127.0.0.1
+  User admin
+
+Host orpheus
+  Port 2224
+  Hostname 127.0.0.1
+  User dave
+
+Host yocuda
+  Port 2225
+  Hostname 127.0.0.1
+  User dave
+  ForwardAgent yes
