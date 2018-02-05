@@ -19,17 +19,16 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'plasticboy/vim-markdown'
   Plugin 'kien/ctrlp.vim'
   Plugin 'mileszs/ack.vim'
-  Plugin 'mkarmona/colorsbox'
-  Plugin 'vim-scripts/paredit.vim'
   Plugin 'Glench/Vim-Jinja2-Syntax'
   Plugin 'sjl/tslime.vim'
   Plugin 'ekalinin/Dockerfile.vim'
-  Plugin 'tpope/vim-commentary'
-  Plugin 'w0ng/vim-hybrid'
   Plugin 'cespare/vim-toml'
   Plugin 'chriskempson/base16-vim'
   Plugin 'rust-lang/rust.vim'
   Plugin 'posva/vim-vue'
+  Plugin 'mxw/vim-jsx'
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'arcticicestudio/nord-vim'
 
   call vundle#end()
   filetype plugin indent on
@@ -41,7 +40,7 @@ set laststatus=0
 set cursorline
 set colorcolumn+=80
 set ruler
-set number
+set nonumber
 set smartindent
 set tabstop=2
 set softtabstop=2
@@ -69,26 +68,39 @@ set hidden
 set noruler
 set noshowcmd
 set nofoldenable
+set termguicolors
 
 set background=dark
-set termguicolors
-let base16colorspace=256
-colorscheme base16-materia
+colorscheme nord
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
-let g:netrw_list_hide='.*\.pyc$'
+set wildignore+=*.png,*.gif,*.jpeg,*.jpg,*.pyc,*.o,*.so,*.woff,*.ttf,*.eot
+
+" Disable the annoying pause when pressing C-c in a SQL file
+let g:ftplugin_sql_omni_key = '<Plug>DisableSqlOmni'
 
 " nerdtree
 " --------
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.pyc$', '.DS_Store', '\.o$', '\.so$', '__pycache__']
-let NERDTreeMinimalUI=1
-let g:NERDTreeWinSize=25
 nmap <Leader>nt :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=20
+let NERDTreeMinimalUI=1
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=[
+  \'\.DS_Store',
+  \'\.pyc$',
+  \'\.o$',
+  \'\.so$',
+  \'\.git',
+  \'\.eggs',
+  \'\.egg-info',
+  \'\.tox',
+  \'env',
+  \'__pycache__',
+\]
 
 " ctrl-p
 " ------
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|env\|build\|__pycache__'
+let g:ctrlp_custom_ignore = 'dist\|eggs\|\.egg-info\|target\|node_modules\|DS_Store\|git\|env\|build\|__pycache__'
 
 " tslime
 " ------
@@ -105,6 +117,8 @@ augroup END
 
 autocmd FileType gitcommit set colorcolumn=50
 autocmd FileType gitcommit set colorcolumn+=72
+autocmd FileType rust set colorcolumn+=100
+autocmd FileType markdown set colorcolumn=
 
 nnoremap ; :
 

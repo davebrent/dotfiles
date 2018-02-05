@@ -9,28 +9,6 @@ alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 export EDITOR='vim'
 export VISUAL='vim'
 
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib:PKG_CONFIG_PATH
-
-if [ -d "$HOME/local/lib" ] ; then
-  export LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
-  export LIBRARY_PATH="$HOME/local/lib:$LIBRARY_PATH"
-fi
-
-if [ -d "$HOME/bin" ] ; then
-  export PATH="$HOME/bin:$PATH"
-fi
-
-if [ -d "$HOME/local/lib/pkgconfig" ] ; then
-  export PKG_CONFIG_PATH="$HOME/local/lib/pkgconfig:$PKG_CONFIG_PATH"
-fi
-
-if [ -d "$HOME/Projects/hans" ] ; then
-  export DYLD_LIBRARY_PATH="$HOME/Projects/hans/build/lib:$DYLD_LIBRARY_PATH"
-  export HANS_MODULES_PATH="$HOME/Projects/hans/build/lib"
-fi
-
-export ASAN_OPTIONS=detect_container_overflow=0
-
 # Append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -48,6 +26,10 @@ if [ -x /usr/bin/dircolors ]; then
   alias ls='ls --color=auto'
   alias grep='grep --color=auto'
 fi
+
+function vm {
+  VBoxManage startvm "${1^}" --type headless
+}
 
 function encdir {
   tar -c $1 | gpg --symmetric --cipher-algo AES256 > $2
@@ -76,8 +58,6 @@ alias gs='git status --short'
 alias gd='git diff'
 alias gl='git log --pretty=oneline --abbrev-commit'
 alias gg='git graph'
-
-alias cargofmt='cargo fmt -- --write-mode=overwrite'
 
 [ -f /usr/share/git/completion/git-completion.bash ] && source /usr/share/git/completion/git-completion.bash
 [ -f /usr/share/git/completion/git-prompt.sh ] && source /usr/share/git/completion/git-prompt.sh
