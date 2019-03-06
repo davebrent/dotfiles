@@ -1,20 +1,17 @@
-Host personal
-  Port 2222
+Host maps
+  Port 2226
   Hostname 127.0.0.1
-  User admin
+  User webadmin
+  ForwardAgent yes
+  ForwardX11 yes
 
-Host private
-  Port 2223
-  Hostname 127.0.0.1
-  User admin
-
-Host orpheus
-  Port 2224
-  Hostname 127.0.0.1
-  User dave
-
-Host yocuda
+Host onemarket
   Port 2225
   Hostname 127.0.0.1
-  User dave
+  User webadmin
   ForwardAgent yes
+
+Host wireguard
+  Port 22
+  Hostname xxx.xxx.xxx.xxx
+  User webadmin

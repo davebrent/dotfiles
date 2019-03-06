@@ -6,29 +6,24 @@ if isdirectory(expand('~/.vim/bundle'))
   call vundle#begin()
 
   Plugin 'VundleVim/Vundle.vim'
-  Plugin 'kana/vim-operator-user'
-  Plugin 'rhysd/vim-clang-format'
+  Plugin 'ctrlpvim/ctrlp.vim'
+  Plugin 'sjl/tslime.vim'
   Plugin 'scrooloose/nerdtree'
-  Plugin 'bronson/vim-trailing-whitespace'
-  Plugin 'bufkill.vim'
   Plugin 'pangloss/vim-javascript'
+  Plugin 'elzr/vim-json'
   Plugin 'cakebaker/scss-syntax.vim'
   Plugin 'hail2u/vim-css3-syntax'
   Plugin 'tikhomirov/vim-glsl'
   Plugin 'groenewege/vim-less'
   Plugin 'plasticboy/vim-markdown'
-  Plugin 'kien/ctrlp.vim'
-  Plugin 'mileszs/ack.vim'
   Plugin 'Glench/Vim-Jinja2-Syntax'
-  Plugin 'sjl/tslime.vim'
   Plugin 'ekalinin/Dockerfile.vim'
   Plugin 'cespare/vim-toml'
-  Plugin 'chriskempson/base16-vim'
   Plugin 'rust-lang/rust.vim'
   Plugin 'posva/vim-vue'
+  Plugin 'dag/vim-fish'
   Plugin 'mxw/vim-jsx'
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'arcticicestudio/nord-vim'
+  Plugin 'lifepillar/vim-solarized8'
 
   call vundle#end()
   filetype plugin indent on
@@ -38,9 +33,7 @@ syntax enable
 set mouse=a
 set laststatus=0
 set cursorline
-set colorcolumn+=80
 set ruler
-set nonumber
 set smartindent
 set tabstop=2
 set softtabstop=2
@@ -70,11 +63,12 @@ set noshowcmd
 set nofoldenable
 set termguicolors
 
-set background=dark
-colorscheme nord
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+set background=light
+colorscheme solarized8
 
-set wildignore+=*.png,*.gif,*.jpeg,*.jpg,*.pyc,*.o,*.so,*.woff,*.ttf,*.eot
+hi VertSplit guibg=bg guifg='grey'
+set fillchars+=vert:│
+set wildignore+=*.png,*.gif,*.jpeg,*.jpg,*.pyc,*.o,*.so,*.woff,*.ttf,*.eot,*.svg
 
 " Disable the annoying pause when pressing C-c in a SQL file
 let g:ftplugin_sql_omni_key = '<Plug>DisableSqlOmni'
@@ -96,7 +90,14 @@ let NERDTreeIgnore=[
   \'\.tox',
   \'env',
   \'__pycache__',
+  \'node_modules',
+  \'site.retry',
 \]
+
+" netrw
+" -----
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
 
 " ctrl-p
 " ------
@@ -109,15 +110,9 @@ let g:tslime_normal_mapping='<localleader>t'
 let g:tslime_visual_mapping='<localleader>t'
 let g:tslime_vars_mapping='<localleader>T'
 
-" Fix highlighting certain keywords
-augroup VimCSS3Syntax
-  autocmd!
-  autocmd FileType css setlocal iskeyword+=-
-augroup END
-
 autocmd FileType gitcommit set colorcolumn=50
 autocmd FileType gitcommit set colorcolumn+=72
-autocmd FileType rust set colorcolumn+=100
+autocmd FileType rust set colorcolumn=
 autocmd FileType markdown set colorcolumn=
 
 nnoremap ; :
@@ -139,4 +134,23 @@ nnoremap <Leader>vv <F2>"+p<F2>
 
 command! PrettifyJSON execute ":%!python -m json.tool"
 
-set fillchars+=vert:\|
+" Terminal stuff taken from :help terminal
+autocmd TermOpen * setlocal nonumber norelativenumber
+tnoremap <Esc> <C-\><C-n>
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+" Vue specific things
+" See https://github.com/posva/vim-vue#faq
+autocmd FileType vue syntax sync fromstart
+let g:vue_disable_pre_processors=1

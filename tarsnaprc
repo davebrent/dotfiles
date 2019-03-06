@@ -6,6 +6,7 @@ print-stats
 checkpoint-bytes 1G
 humanize-numbers
 
+exclude target
 exclude node_modules
 exclude venv
 exclude env
@@ -14,3 +15,6 @@ exclude .git
 exclude *.o
 exclude *.so
 exclude ~/Workspace/davebrent/samples/external
+exclude ~/Workspace/davebrent/yoga
+exclude ~/Workspace/davebrent/maps
+exclude ~/Workspace/davebrent/excurs/vendor
