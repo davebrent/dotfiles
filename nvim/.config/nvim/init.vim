@@ -76,7 +76,7 @@ let g:ftplugin_sql_omni_key = '<Plug>DisableSqlOmni'
 " nerdtree
 " --------
 nmap <Leader>nt :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=20
+let g:NERDTreeWinSize=50
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=[
