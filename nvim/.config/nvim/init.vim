@@ -63,7 +63,7 @@ set noshowcmd
 set nofoldenable
 set termguicolors
 
-set background=light
+set background=dark
 colorscheme solarized8
 
 hi VertSplit guibg=bg guifg='grey'
@@ -76,7 +76,7 @@ let g:ftplugin_sql_omni_key = '<Plug>DisableSqlOmni'
 " nerdtree
 " --------
 nmap <Leader>nt :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=50
+let g:NERDTreeWinSize=20
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=[
