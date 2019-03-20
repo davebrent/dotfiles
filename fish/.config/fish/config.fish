@@ -43,7 +43,6 @@ function vm
     set cmd "list"
   end
 
-  # Ensure VM name is Capitalized
   set name (echo $name | sed "s/[^ _-]*/\u&/g")
 
   switch $cmd
@@ -83,7 +82,6 @@ function reviewboard
 end
 
 function fish_prompt
-  # Display the current directories git branch
   set -l branch (git rev-parse --abbrev-ref HEAD 2> /dev/null)
   if test -n "$branch"
     set -l bold (set_color --bold)
