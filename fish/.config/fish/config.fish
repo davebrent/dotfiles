@@ -56,6 +56,22 @@ function vm
   end
 end
 
+function dirty -d "List git repos in a dirty state or with untracked files"
+  for dir in (find ~/Workspace -maxdepth 2 -type d)
+    pushd $dir
+    set -l gitdir (git rev-parse --is-inside-work-tree 2>/dev/null)
+    if test -n "$gitdir"
+      set -l num (git status --porcelain | wc -l)
+      if test "$num" != "0"
+        set -l namespace (basename (dirname (pwd)))
+        set -l repo (basename (pwd))
+        echo "($num) $namespace/$repo"
+      end
+    end
+    popd
+  end
+end
+
 function reviewboard
   rbt post -g yes \
     --branch (git rev-parse --abbrev-ref HEAD) \
@@ -108,6 +124,15 @@ function fish_greeting
     for val in $vms
       set -l name (echo $val | cut -d ' ' -f 1 | tr -d '"')
       echo "  $name"
+    end
+  end
+
+  set -l gits (dirty)
+  if test -n "$gits"
+    echo ""
+    echo "Git"
+    for repo in $gits
+      echo "  $repo"
     end
   end
 end
