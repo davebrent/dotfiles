@@ -15,6 +15,9 @@ function backup-excludes
       echo "$line"
     end
   end
+  for line in (find ~/ -type f -size +250M 2> /dev/null)
+    echo "$line"
+  end
 end
 
 function backup-run
