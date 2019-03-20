@@ -1,6 +1,0 @@
-[Unit]
-Description=Run tarsnap backup
-
-[Service]
-Type=oneshot
-ExecStart=/bin/sh ${HOME}/.config/tarsnap/backup.sh
