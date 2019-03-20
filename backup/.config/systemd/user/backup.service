@@ -3,4 +3,4 @@ Description=Run backup
 
 [Service]
 Type=oneshot
-ExecStart=/bin/fish backup-run
+ExecStart=/usr/bin/fish -c backup-run
