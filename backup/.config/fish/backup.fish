@@ -1,4 +1,4 @@
-set BACKUP_DIRS    ~/Workspace ~/Pictures ~/Documents
+set BACKUP_DIRS ~/Workspace ~/Pictures ~/Documents ~/.gnupg ~/.ssh ~/.aws
 set BACKUP_EXCLUDE ~/.config/restic/excludes.txt
 
 set -g -x RESTIC_REPOSITORY ~/.local/share/restic
@@ -18,7 +18,15 @@ function backup-excludes
 end
 
 function backup-run
+  mkdir -p (dirname $BACKUP_EXCLUDE)
   backup-excludes | sort | uniq > $BACKUP_EXCLUDE
-  restic backup --exclude-file $BACKUP_EXCLUDE $BACKUP_DIRS
-  restic check --read-data
+  restic backup --verbose --exclude-file $BACKUP_EXCLUDE $BACKUP_DIRS
+  restic check
+  restic forget \
+    --prune \
+    --keep-daily 7 \
+    --keep-weekly 8 \
+    --keep-monthly 12 \
+    --keep-yearly 3
+  restic check
 end
