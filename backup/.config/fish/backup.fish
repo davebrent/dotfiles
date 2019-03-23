@@ -1,8 +1,17 @@
 set BACKUP_DIRS ~/Workspace ~/Pictures ~/Documents ~/.gnupg ~/.ssh ~/.aws
 set BACKUP_EXCLUDE ~/.config/restic/excludes.txt
+set BACKUP_VARS ~/.config/restic/variables.fish
 
-set -g -x RESTIC_REPOSITORY ~/.local/share/restic
-set -g -x RESTIC_PASSWORD_FILE ~/Workspace/davebrent/secrets/restic/password.txt
+function backup-begin
+  source $BACKUP_VARS
+end
+
+function backup-end
+  set -e RESTIC_REPOSITORY
+  set -e RESTIC_PASSWORD_FILE
+  set -e AWS_ACCESS_KEY_ID
+  set -e AWS_SECRET_ACCESS_KEY
+end
 
 function backup-excludes
   for file in (find ~/ -type f -name .backupignore)
@@ -21,6 +30,7 @@ function backup-excludes
 end
 
 function backup-run
+  backup-begin
   mkdir -p (dirname $BACKUP_EXCLUDE)
   backup-excludes | sort | uniq > $BACKUP_EXCLUDE
   restic backup --verbose --exclude-file $BACKUP_EXCLUDE $BACKUP_DIRS
@@ -32,4 +42,11 @@ function backup-run
     --keep-monthly 12 \
     --keep-yearly 3
   restic check
+  backup-end
+end
+
+function backup-restore
+  backup-begin
+  restic restore latest --target $argv[1]
+  backup-end
 end
