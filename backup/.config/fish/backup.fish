@@ -1,6 +1,7 @@
 set BACKUP_DIRS ~/Workspace ~/Pictures ~/Documents ~/.gnupg ~/.ssh ~/.aws
 set BACKUP_EXCLUDE ~/.config/restic/excludes.txt
 set BACKUP_VARS ~/.config/restic/variables.fish
+set BACKUP_LASTBACKUP ~/.local/share/restic/last_backup
 
 function backup-begin
   source $BACKUP_VARS
@@ -42,6 +43,8 @@ function backup-run
     --keep-monthly 12 \
     --keep-yearly 3
   restic check
+  restic snapshots --last --json \
+    | jq -r '.[0]["time"]' > $BACKUP_LASTBACKUP
   backup-end
 end
 

@@ -108,6 +108,11 @@ function fish_greeting
   uname -mrsn
   df -h --output=size,used,avail,pcent,target /home /
 
+  echo ""
+  set -l backup (date --date=(cat $BACKUP_LASTBACKUP))
+  echo "Last backup"
+  echo "  $backup"
+
   set -l outdated (pacman -Qu | wc -l)
   set -l installed (pacman -Qe | wc -l)
   echo ""
@@ -122,6 +127,15 @@ function fish_greeting
     for val in $vms
       set -l name (echo $val | cut -d ' ' -f 1 | tr -d '"')
       echo "  $name"
+    end
+  end
+
+  set -l tmuxs (tmux ls -F '#S #H #T')
+  if test -n "$tmuxs"
+    echo ""
+    echo "Tmux sessions"
+    for val in $tmuxs
+      echo "  $val"
     end
   end
 
