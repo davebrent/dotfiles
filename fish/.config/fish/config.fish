@@ -79,11 +79,15 @@ end
 function reviewboard
   rbt post -g yes \
     --branch (git rev-parse --abbrev-ref HEAD) \
-    --bugs-closed (git log -1 | sed -En 's/\s*Jira:\s*DEV-(.*)/DEV-\1/p') \
     --target-groups tech \
     --parent develop \
     --tracking-branch origin/develop \
     --repository (git config --get remote.origin.url)
+end
+
+function jira
+  set -l since $argv[1]
+  git log --author="Dave" --date=short --since=$since | grep "^\s*Jira: "
 end
 
 function fish_prompt
