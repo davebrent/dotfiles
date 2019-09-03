@@ -2,11 +2,7 @@
 Description=Run a backup daily
 
 [Timer]
-# Run when first activated
-OnActiveSec=0
-# Then run at 5pm daily
 OnCalendar=*-*-* 17:00:00
-# And run immediately if a run was missed
 Persistent=true
 
 [Install]
