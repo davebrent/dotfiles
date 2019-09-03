@@ -126,6 +126,13 @@ function fish_greeting
   echo "Last backup"
   echo "  $backup"
 
+  echo ""
+  set -l scrapers (~/Workspace/davebrent/scrapers/summary)
+  echo "Scrapers"
+  for val in $scrapers
+    echo "  $val"
+  end
+
   set -l vms (vm)
   if test -n "$vms"
     echo ""
