@@ -23,6 +23,9 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'dag/vim-fish'
   Plugin 'mxw/vim-jsx'
   Plugin 'lifepillar/vim-solarized8'
+  Plugin 'burner/vim-svelte'
+  Plugin 'leafgarland/typescript-vim'
+  Plugin 'editorconfig/editorconfig-vim'
 
   call vundle#end()
   filetype plugin indent on
@@ -62,7 +65,7 @@ set noshowcmd
 set nofoldenable
 set termguicolors
 
-set background=dark
+set background=light
 colorscheme solarized8
 
 hi VertSplit guibg=bg guifg='grey'
@@ -75,7 +78,7 @@ let g:ftplugin_sql_omni_key = '<Plug>DisableSqlOmni'
 " nerdtree
 " --------
 nmap <Leader>nt :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=20
+let g:NERDTreeWinSize=35
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=[
@@ -83,7 +86,6 @@ let NERDTreeIgnore=[
   \'\.pyc$',
   \'\.o$',
   \'\.so$',
-  \'\.git',
   \'\.eggs',
   \'\.egg-info',
   \'\.tox',
@@ -156,3 +158,6 @@ nnoremap <A-l> <C-w>l
 " See https://github.com/posva/vim-vue#faq
 autocmd FileType vue syntax sync fromstart
 let g:vue_disable_pre_processors=1
+
+" Rust
+let g:rustfmt_autosave = 1
