@@ -1,0 +1,7 @@
+[Unit]
+Description=Scrape sites
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/dave/Workspace/davebrent/scrapers
+ExecStart=make scrape
