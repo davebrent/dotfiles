@@ -1,4 +1,6 @@
-source ~/.config/fish/backup.fish
+if test -f ~/.config/fish/backup.fish
+  source ~/.config/fish/backup.fish
+end
 
 abbr --add vim "nvim"
 abbr --add gs "git status --short"
@@ -8,7 +10,7 @@ abbr --add gg "git graph"
 set -x EDITOR vim
 set -x VISUAL vim
 
-set -u fish_user_paths ~/.cargo/bin
+set -u fish_user_paths ~/.cargo/bin ~/.local/bin
 
 set -gx FZF_DEFAULT_COMMAND "rg --iglob '!*.gif' --iglob '!*.png' --files"
 set -gx FZF_DEFAULT_OPTS "--color=light"
@@ -108,6 +110,10 @@ function fish_mode_prompt
 end
 
 function fish_greeting
+end
+
+if test -f ~/.config/fish/backup.fish
+function fish_greeting
   uname -mrsn
   df -h --output=size,used,avail,pcent,target /home /
 
@@ -133,7 +139,7 @@ function fish_greeting
     end
   end
 
-  set -l tmuxs (tmux ls -F '#S #H #T')
+  set -l tmuxs (tmux ls -F '#S #H #T' 2> /dev/null)
   if test -n "$tmuxs"
     echo ""
     echo "Tmux sessions"
@@ -150,4 +156,5 @@ function fish_greeting
       echo "  $repo"
     end
   end
+end
 end
