@@ -126,13 +126,6 @@ function fish_greeting
   echo "Last backup"
   echo "  $backup"
 
-  set -l outdated (pacman -Qu | wc -l)
-  set -l installed (pacman -Qe | wc -l)
-  echo ""
-  echo "Pacman"
-  echo "  $installed Packages explicitly installed."
-  echo "  $outdated Packages can be updated."
-
   set -l vms (vm)
   if test -n "$vms"
     echo ""
@@ -140,15 +133,6 @@ function fish_greeting
     for val in $vms
       set -l name (echo $val | cut -d ' ' -f 1 | tr -d '"')
       echo "  $name"
-    end
-  end
-
-  set -l tmuxs (tmux ls -F '#S #H #T' 2> /dev/null)
-  if test -n "$tmuxs"
-    echo ""
-    echo "Tmux sessions"
-    for val in $tmuxs
-      echo "  $val"
     end
   end
 
