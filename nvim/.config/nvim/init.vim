@@ -6,7 +6,6 @@ if isdirectory(expand('~/.vim/bundle'))
   call vundle#begin()
 
   Plugin 'VundleVim/Vundle.vim'
-  Plugin 'ctrlpvim/ctrlp.vim'
   Plugin 'sjl/tslime.vim'
   Plugin 'scrooloose/nerdtree'
   Plugin 'pangloss/vim-javascript'
@@ -102,6 +101,9 @@ let g:netrw_banner = 0
 " ctrl-p
 " ------
 let g:ctrlp_custom_ignore = 'dist\|eggs\|\.egg-info\|target\|node_modules\|DS_Store\|git\|env\|build\|__pycache__'
+
+set rtp+=/usr/share/fzf
+nmap <C-P> :FZF<CR>
 
 " tslime
 " ------

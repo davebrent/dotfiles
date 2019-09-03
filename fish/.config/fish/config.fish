@@ -10,6 +10,9 @@ set -x VISUAL vim
 
 set -u fish_user_paths ~/.cargo/bin
 
+set -gx FZF_DEFAULT_COMMAND "rg --iglob '!*.gif' --iglob '!*.png' --files"
+set -gx FZF_DEFAULT_OPTS "--color=light"
+
 function s
   grep -Hrn $argv
 end
