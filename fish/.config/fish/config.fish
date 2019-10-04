@@ -25,10 +25,14 @@ end
 
 function vpn-start
   sudo systemctl start wg-quick@wg0
+  sudo resolvectl dns wg0 10.10.10.1
+  sudo resolvectl domain wg0 '~.'
+  sudo resolvectl domain wlp58s0 ''
 end
 
 function vpn-stop
   sudo systemctl stop wg-quick@wg0
+  sudo resolvectl domain wlp58s0 '~.'
 end
 
 function myip

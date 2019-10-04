@@ -26,6 +26,7 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'burner/vim-svelte'
   Plugin 'leafgarland/typescript-vim'
   Plugin 'editorconfig/editorconfig-vim'
+  Plugin 'ElmCast/elm-vim'
 
   call vundle#end()
   filetype plugin indent on
@@ -89,7 +90,6 @@ let NERDTreeIgnore=[
   \'\.eggs',
   \'\.egg-info',
   \'\.tox',
-  \'env',
   \'__pycache__',
   \'node_modules',
   \'site.retry',
