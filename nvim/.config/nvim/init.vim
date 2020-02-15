@@ -27,6 +27,8 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'leafgarland/typescript-vim'
   Plugin 'editorconfig/editorconfig-vim'
   Plugin 'ElmCast/elm-vim'
+  Plugin 'fatih/vim-go'
+  Plugin 'statico/vim-javascript-sql'
 
   call vundle#end()
   filetype plugin indent on
@@ -79,7 +81,7 @@ let g:ftplugin_sql_omni_key = '<Plug>DisableSqlOmni'
 " nerdtree
 " --------
 nmap <Leader>nt :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=35
+let g:NERDTreeWinSize=25
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=[
@@ -92,6 +94,7 @@ let NERDTreeIgnore=[
   \'\.tox',
   \'__pycache__',
   \'node_modules',
+  \'elm-stuff',
   \'site.retry',
 \]
 
