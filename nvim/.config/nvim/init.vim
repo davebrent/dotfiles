@@ -29,6 +29,8 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'ElmCast/elm-vim'
   Plugin 'fatih/vim-go'
   Plugin 'statico/vim-javascript-sql'
+  Plugin 'peitalin/vim-jsx-typescript'
+  Plugin 'chriskempson/base16-vim'
 
   call vundle#end()
   filetype plugin indent on
@@ -69,7 +71,7 @@ set nofoldenable
 set termguicolors
 
 set background=light
-colorscheme solarized8
+colorscheme base16-default-dark
 
 hi VertSplit guibg=bg guifg='grey'
 set fillchars+=vert:│
@@ -87,6 +89,7 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=[
   \'\.DS_Store',
   \'\.pyc$',
+  \'\.spv$',
   \'\.o$',
   \'\.so$',
   \'\.eggs',
