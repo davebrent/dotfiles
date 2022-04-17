@@ -8,29 +8,21 @@ if isdirectory(expand('~/.vim/bundle'))
   Plugin 'VundleVim/Vundle.vim'
   Plugin 'sjl/tslime.vim'
   Plugin 'scrooloose/nerdtree'
-  Plugin 'pangloss/vim-javascript'
   Plugin 'elzr/vim-json'
-  Plugin 'cakebaker/scss-syntax.vim'
-  Plugin 'hail2u/vim-css3-syntax'
   Plugin 'tikhomirov/vim-glsl'
-  Plugin 'groenewege/vim-less'
   Plugin 'plasticboy/vim-markdown'
-  Plugin 'Glench/Vim-Jinja2-Syntax'
   Plugin 'ekalinin/Dockerfile.vim'
   Plugin 'cespare/vim-toml'
   Plugin 'rust-lang/rust.vim'
-  Plugin 'posva/vim-vue'
   Plugin 'dag/vim-fish'
-  Plugin 'mxw/vim-jsx'
   Plugin 'lifepillar/vim-solarized8'
-  Plugin 'burner/vim-svelte'
-  Plugin 'leafgarland/typescript-vim'
-  Plugin 'editorconfig/editorconfig-vim'
   Plugin 'ElmCast/elm-vim'
-  Plugin 'fatih/vim-go'
   Plugin 'statico/vim-javascript-sql'
-  Plugin 'peitalin/vim-jsx-typescript'
   Plugin 'chriskempson/base16-vim'
+  Plugin 'pangloss/vim-javascript'
+  Plugin 'leafgarland/typescript-vim'
+  Plugin 'peitalin/vim-jsx-typescript'
+  Plugin 'styled-components/vim-styled-components'
 
   call vundle#end()
   filetype plugin indent on
@@ -68,10 +60,14 @@ set hidden
 set noruler
 set noshowcmd
 set nofoldenable
-set termguicolors
 
-set background=light
-colorscheme base16-default-dark
+if exists('+termguicolors')
+  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+colorscheme base16-github
 
 hi VertSplit guibg=bg guifg='grey'
 set fillchars+=vert:│
@@ -90,8 +86,6 @@ let NERDTreeIgnore=[
   \'\.DS_Store',
   \'\.pyc$',
   \'\.spv$',
-  \'\.o$',
-  \'\.so$',
   \'\.eggs',
   \'\.egg-info',
   \'\.tox',
