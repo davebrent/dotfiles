@@ -16,14 +16,14 @@ export PATH="$HOME/.local/bin:$PATH"
 export FZF_DEFAULT_COMMAND="rg --iglob '!.git' --iglob '!node_modules' --iglob '!*.gif' --iglob '!*.png' --files"
 export FZF_DEFAULT_OPTS="--color=light"
 
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
-export HOMEBREW_NO_AUTO_UPDATE=1
-export CPATH="$CPATH:/opt/homebrew/include"
-export LIBRARY_PATH="$LIBRARY_PATH:/opt/homebrew/lib"
-export CC="$(brew --prefix llvm)/bin/clang"
-export CXX="$(brew --prefix llvm)/bin/clang++"
-alias clangd="$(brew --prefix llvm)/bin/clangd"
+# # Homebrew
+# eval "$(/opt/homebrew/bin/brew shellenv)"
+# export HOMEBREW_NO_AUTO_UPDATE=1
+# export CPATH="$CPATH:/opt/homebrew/include"
+# export LIBRARY_PATH="$LIBRARY_PATH:/opt/homebrew/lib"
+# export CC="$(brew --prefix llvm)/bin/clang"
+# export CXX="$(brew --prefix llvm)/bin/clang++"
+# alias clangd="$(brew --prefix llvm)/bin/clangd"
 
 # Rustup
 source "$HOME/.cargo/env"
