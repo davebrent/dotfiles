@@ -1,9 +1,0 @@
-[Unit]
-Description=Run a backup daily
-
-[Timer]
-OnCalendar=*-*-* 17:00:00
-Persistent=true
-
-[Install]
-WantedBy=timers.target

@@ -38,7 +38,6 @@ vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.errorbells = false
 vim.opt.visualbell = false
-vim.opt.pastetoggle = '<F2>'
 vim.opt.showmode = true
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.ruler = false
@@ -62,10 +61,24 @@ vim.opt.wildignore:append({
   '*/.git/*'
 })
 
+-- Have a shortcut to disable diagnostics as they can be really annoying
+function toggleDiagnostics()
+  vim.diagnositic.enable(not vim.diagnositic.is_enabled())
+end
+vim.keymap.set('n', '<leader>d', toggleDiagnostics, { silent = true, noremap = true })
+
+-- Automatically create nice columns for nice git commit messages
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'gitcommit' },
+  callback = function()
+    vim.opt.colorcolumn = {50, 72}
+  end
+})
+
 -- Load and configure plugins
 require("lazy").setup({
   -- Lazy options
-  install = { colorscheme = { 'base16-harmonic-light' } },
+  install = { colorscheme = { 'base16-materia' } },
   checker = {
     enabled = true,
     notify = false,
@@ -77,7 +90,13 @@ require("lazy").setup({
       'RRethy/nvim-base16',
       lazy = false,
       config = function()
-        vim.cmd.colorscheme('base16-harmonic-light')
+        -- Patched version of materia to match iterm2
+        require('base16-colorscheme').setup({
+          base00 = '#283137', base01 = '#2c393f', base02 = '#37474f', base03 = '#707880',
+          base04 = '#c9ccd3', base05 = '#cdd3de', base06 = '#d5dbe5', base07 = '#ffffff',
+          base08 = '#ec5f67', base09 = '#ea9560', base0A = '#ffcc00', base0B = '#8bd649',
+          base0C = '#80cbc4', base0D = '#9cdafb', base0E = '#82aaff', base0F = '#ec5f67',
+        })
       end,
     },
 
@@ -101,6 +120,7 @@ require("lazy").setup({
           '__pycache__',
           'elm-stuff',
           'site.retry',
+          'compile_commands.json',
         }
       },
       config = function(_, opts)

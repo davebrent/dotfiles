@@ -1,6 +1,0 @@
-[Unit]
-Description=Run backup
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/fish -c backup-run

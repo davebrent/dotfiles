@@ -1,28 +1,21 @@
 [user]
-    name = Dave Poulter
-    email = hello@davepoulter.net
+name = Dave Poulter
+email = hello@davepoulter.net
 
 [core]
-    editor = NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim
-    excludesfile = ~/.gitignore_global
+editor = NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim
 
 [push]
-    default = simple
+default = simple
 
 [color]
-    diff = auto
-    status = auto
-    branch = auto
+diff = auto
+status = auto
+branch = auto
 
 [alias]
-    graph = log --graph --full-history \
-      --branches --remotes --tags --graph --oneline --decorate \
-      --pretty=format:'%Cred%h%Creset \
-      -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
-      --abbrev-commit --date=relative
-
-[filter "lfs"]
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
-    clean = git-lfs clean -- %f
+graph = log --graph --full-history \
+  --branches --remotes --tags --graph --oneline --decorate \
+  --pretty=format:'%Cred%h%Creset \
+  -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
+  --abbrev-commit --date=relative
