@@ -143,23 +143,6 @@ require("lazy").setup({
     },
 
     {
-      'nvim-treesitter/nvim-treesitter',
-      build = ':TSUpdate',
-      config = function()
-        require('nvim-treesitter.configs').setup({
-          ensure_installed = {'rust', 'python', 'cpp'},
-          sync_install = true,
-          auto_install = true,
-          highlight = {
-            enable = true,
-            additional_vim_regex_highlighting = false,
-            disable = { 'cpp' }, -- Currently broken/buggy
-          },
-        })
-      end
-    },
-
-    {
       'neovim/nvim-lspconfig',
       event = { 'BufReadPre', 'BufNewFile' },
       config = function()
