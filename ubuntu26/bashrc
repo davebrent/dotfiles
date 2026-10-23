@@ -16,7 +16,7 @@ alias server="python3 -m http.server 9000"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/opt/nvim/bin"
 
-PS1='\[\e[1m\]\u@\h\[\e[0m\]:\[\e[1;96m\]\w\[\e[0m\]\$ '
+PS1='\[\e[1m\]\u@\h\[\e[0m\]:\[\e[1;96m\]\W\[\e[0m\]\$ '
 
 export FZF_DEFAULT_COMMAND="rg --iglob '!*.gif' --iglob '!*.png' --iglob '!*.a' --iglob '!*.o' --files"
 
@@ -28,4 +28,26 @@ function git-move-last {
 
 function git-split-last {
   git reset HEAD~
+}
+
+function sysinfo {
+  if command -v sensors >/dev/null 2>&1; then
+    sensors | awk '
+      /Tctl:|Tdie:/ {
+        print "CPU:  " $2
+        found=1
+        exit
+      }
+      END { if (!found) print "CPU:  N/A" }
+    '
+  fi
+
+  if command -v nvidia-smi >/dev/null 2>&1; then
+    nvidia-smi --query-gpu=temperature.gpu \
+      --format=csv,noheader,nounits |
+      awk '{ print "GPU:  " $1 "°C" }'
+  fi
+
+  df -h --output=size,used,avail,pcent / | tail -n 1 |
+    awk '{ printf "Disk: %s used / %s total (%s), %s free\n", $2, $1, $4, $3 }'
 }
