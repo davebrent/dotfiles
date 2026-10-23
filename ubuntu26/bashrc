@@ -15,6 +15,7 @@ alias server="python3 -m http.server 9000"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/opt/nvim/bin"
+export PATH="/usr/local/cuda-13.4/bin:$PATH"
 
 PS1='\[\e[1m\]\u@\h\[\e[0m\]:\[\e[1;96m\]\W\[\e[0m\]\$ '
 
