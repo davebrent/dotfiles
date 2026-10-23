@@ -1,0 +1,2 @@
+git:
+  branchLogCmd: git diff --color=always --stat --patch --merge-base origin/main {{branchName}} --

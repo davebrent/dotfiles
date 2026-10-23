@@ -1,0 +1,16 @@
+[user]
+name = Dave Poulter
+email = dapoulter@gmail.com
+
+[init]
+defaultBranch = main
+
+[color]
+ui = auto
+
+[alias]
+graph = log --graph --full-history \
+  --branches --remotes --tags --graph --oneline --decorate \
+  --pretty=format:'%Cred%h%Creset \
+  -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
+  --abbrev-commit --date=relative

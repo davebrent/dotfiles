@@ -1,0 +1,31 @@
+export EDITOR="nvim"
+
+alias gs="git status"
+alias gd="git diff"
+alias gb="git branch"
+alias gc="git checkout"
+alias gg="git graph"
+alias s="grep -Hrn"
+alias d="ydiff -s"
+alias tmux="tmux -2"
+alias vim="nvim"
+alias la='ls -lah'
+alias s='grep -Hrn'
+alias server="python3 -m http.server 9000"
+
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:/opt/nvim/bin"
+
+PS1='\[\e[1m\]\u@\h\[\e[0m\]:\[\e[1;96m\]\w\[\e[0m\]\$ '
+
+export FZF_DEFAULT_COMMAND="rg --iglob '!*.gif' --iglob '!*.png' --iglob '!*.a' --iglob '!*.o' --files"
+
+function git-move-last {
+  git branch $1
+  git reset --keep HEAD~1
+  git checkout $1
+}
+
+function git-split-last {
+  git reset HEAD~
+}
