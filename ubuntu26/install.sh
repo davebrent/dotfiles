@@ -183,6 +183,19 @@ install_codex() {
         @openai/codex
 }
 
+install_opencode() {
+    if [[ -x "$BIN_DIR/opencode" ]]; then
+        log "OpenCode already installed"
+        return
+    fi
+
+    log "Installing OpenCode"
+
+    npm install --global \
+        --prefix "$HOME/.local" \
+        @opencode/cli
+}
+
 configure_apparmor() {
     local source="/usr/share/apparmor/extra-profiles/bwrap-userns-restrict"
     local dest="/etc/apparmor.d/bwrap-userns-restrict"
@@ -265,6 +278,7 @@ main() {
     install_rustup
     install_uv
     install_codex
+    install_opencode
 
     configure_apparmor
     install_tpm
@@ -282,6 +296,7 @@ main() {
     "$HOME/.cargo/bin/rustup" --version
     "$BIN_DIR/uv" --version
     "$BIN_DIR/codex" --version
+    "$BIN_DIR/opencode" --version
 
     log "Install complete"
 }
